@@ -1,7 +1,7 @@
 (function() {
     define(['require', 'jquery', 'underscore', 'bb', 'i/item/c','text!/html/contact.html'], function(require, $, _, Backbone, Items) {
         return Backbone.View.extend({
-            id: 'index',
+            id: 'contact',
             initialize: function(options) {
                 var that = this;
                 this.___ = options.___;

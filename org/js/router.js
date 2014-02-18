@@ -46,7 +46,7 @@
 				___.ga('send', 'pageview', page);
 				___.c.save({page: page});
 				___.i.save({page: page});
-
+				$('#content > div').hide()
 				$('a').removeClass("active");
 				$('a[href="#!' + page + '"]').addClass("active");
 				return ___;
@@ -81,6 +81,7 @@
 			___.router.on('route:contact', function() {
 					var path = 'contact';
 					___ = ___.router.onPageStart(path, ___);
+					___.view.$('#content < div')
 					require(['views/contact'], function(Page) {
 						___.router.loadCss('/less/contact.css');
 						if(___.view.$('#content #contact').length >0)
