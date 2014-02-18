@@ -1,6 +1,6 @@
 module.exports = 
 {
-	 "title" : "Live Sqrd"
+	 "title" : "Example Project"
 	,"api"		: {
 				}
 	,"useAuth" 	: false
@@ -9,7 +9,7 @@ module.exports =
 				  }
 	,"token"	: [
 					{"name": "general"
-					,"val": "abcdefg"}
+					,"val": "exampleProject"}
 				]
 	,"views" 	: "client/views"
 	,"favicon"	: "client/org/img/favicon.ico"
