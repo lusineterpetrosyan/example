@@ -81,7 +81,6 @@
 			___.router.on('route:contact', function() {
 					var path = 'contact';
 					___ = ___.router.onPageStart(path, ___);
-					___.view.$('#content < div')
 					require(['views/contact'], function(Page) {
 						___.router.loadCss('/less/contact.css');
 						if(___.view.$('#content #contact').length >0)
