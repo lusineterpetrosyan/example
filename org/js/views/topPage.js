@@ -2,8 +2,7 @@
 
   define(['require', 'jquery', 'underscore', 'bb', 'text!/html/header.html','text!/html/footer.html'], function(require, $, _, Backbone) {
     return Backbone.View.extend({
-      id: 'top',
-      tagName: 'header',
+      el: 'header#top',
       initialize: function(options) {
         this.___ = options.___;
         this.render();
