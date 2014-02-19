@@ -22,7 +22,7 @@
                 this.items.fetch({
                     success: function(){
                        that.items.each(function(m){ 
-                            this.addItem(m);
+                            that.addItem(m);
                         })
                     },data: {
                         "group": "person"
