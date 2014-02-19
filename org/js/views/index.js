@@ -30,21 +30,22 @@
                 })
             },
             addItem: function(m){
-                if(this.$("li[data-id='" + m.id + "']").length == 0){
-                   // this.$("ul.dataItems").append("<li data-id='" + m.get("id") + "'>'" + m.get("body.name") + "'<span class='remove'> X </span></li>") // show in list??? or add in it
+                if(this.$("li[data-id='" + m.id + "']").length == 0 && _.isString(m.id)){
+                   // this.$("ul.dataItems").append("<li data-id='" + m.get("_id") + "'>'" + m.get("body.name") + "'<span class='remove'> X </span></li>") // show in list??? or add in it
                      this.$("ul.dataItems").append(this.addItemPage(m.toJSON())); 
                  }
             },
             createItem: function(){
-                this.items.create({
-                    "body":{
+                this.items.create({  
+                    "title":"SomeBody"   
+                    ,"body":{
                         "name": "SomeBody", 
                         "last": "Last"
                     }
                     ,"group":"person"
                 }, {callback: function(json, model){
-console.log('json', json)
-console.log('model', model)
+                        console.log('json', json)
+                        console.log('model', model)
                 }
             })
             },
