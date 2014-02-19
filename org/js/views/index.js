@@ -1,26 +1,52 @@
 (function() {
-    define(['require', 'jquery', 'underscore', 'bb', 'i/item/c','text!/html/index.html'], function(require, $, _, Backbone, Items) {
+    define(['require', 'jquery', 'underscore', 'bb', 'i/item/c','text!/html/index.html','text!/html/addItem.html'], function(require, $, _, Backbone, Items,IndexPage,AddItemPage) {
         return Backbone.View.extend({
             id: 'index',
             initialize: function(options) {
                 var that = this;
                 this.___ = options.___;
-                this.items = new Items(null,{ s: this.___.so});
-                var Home = require('text!/html/index.html');
-                this.home = _.template(Home);
+                this.items = new Items(null,{ s: this.___.so}); //1st is preloading models ; 2nd is option having socket
+                this.items.on('add', this.addItem, this);
+                //this.items.on('remove', this.removeItem, this);
+                this.home = _.template(IndexPage);
+                this.addItemPage = _.template(AddItemPage);
                 that.render();
             },
             events: {
+                'click #create': "createItem",
+                'click .remove': "removeItem"
             },
             render:function(){
                 var that       = this;
                 that.$el.html(this.home({}))
-               /* that.items.fetch({
-                    success:function(){
-                    },data:{}
-                })
-             */
-            
+
+            },
+            addItem: function(m){
+                if(this.$("li[data-id='" + m.id + "']").length == 0){
+                   // this.$("ul.dataItems").append("<li data-id='" + m.get("id") + "'>'" + m.get("body.name") + "'<span class='remove'> X </span></li>") // show in list??? or add in it
+                     this.$("ul.dataItems").append(this.addItemPage(m.JSON())); 
+                 }
+            },
+            createItem: function(){
+                this.items.create({
+                    "body":{
+                        "name": "SomeBody", 
+                        "last": "Last"
+                    }
+                    ,"group":"person"
+                }, {callback: function(json, model){
+console.log('json', json)
+console.log('model', model)
+                }
+            })
+            },
+            removeItem: function(m){
+                if(this.$("li[data-id='" + m.id + "']").length == 1){
+                    this.$("li[data-id='" + m.id + "']").remove();
+                }
+            }, 
+            deleteItem: function(){
+
             }
     });
 });

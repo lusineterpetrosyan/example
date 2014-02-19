@@ -2,6 +2,7 @@ module.exports =
 {
 	 "title" : "Example Project"
 	,"api"		: {
+		
 				}
 	,"useAuth" 	: false
 	,"auth" 	: {
