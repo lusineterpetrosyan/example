@@ -19,12 +19,20 @@
             render:function(){
                 var that       = this;
                 that.$el.html(this.home({}))
-
+                this.items.fetch({
+                    success: function(){
+                       that.items.each(function(m){ 
+                            this.addItem(m);
+                        })
+                    },data: {
+                        "group": "person"
+                    }
+                })
             },
             addItem: function(m){
                 if(this.$("li[data-id='" + m.id + "']").length == 0){
                    // this.$("ul.dataItems").append("<li data-id='" + m.get("id") + "'>'" + m.get("body.name") + "'<span class='remove'> X </span></li>") // show in list??? or add in it
-                     this.$("ul.dataItems").append(this.addItemPage(m.JSON())); 
+                     this.$("ul.dataItems").append(this.addItemPage(m.toJSON())); 
                  }
             },
             createItem: function(){
