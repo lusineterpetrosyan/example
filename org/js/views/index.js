@@ -57,7 +57,10 @@
             deleteItem: function(e){
                 var id = $(e.currentTarget).parent().data("id");
                 var m = this.items.get(id);
-                m.destroy();
+               console.log('m',m)
+               console.log('id',id)
+
+               // m.destroy();
             }
     });
 });
