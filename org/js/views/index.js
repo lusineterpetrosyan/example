@@ -7,14 +7,14 @@
                 this.___ = options.___;
                 this.items = new Items(null,{ s: this.___.so}); //1st is preloading models ; 2nd is option having socket
                 this.items.on('add', this.addItem, this);
-                //this.items.on('remove', this.removeItem, this);
+                this.items.on('remove', this.removeItem, this);
                 this.home = _.template(IndexPage);
                 this.addItemPage = _.template(AddItemPage);
                 that.render();
             },
             events: {
                 'click #create': "createItem",
-                'click .remove': "removeItem"
+                'click .remove': "deleteItem"
             },
             render:function(){
                 var that       = this;
@@ -54,8 +54,10 @@
                     this.$("li[data-id='" + m.id + "']").remove();
                 }
             }, 
-            deleteItem: function(){
-
+            deleteItem: function(e){
+                var id = $(e.currentTarget).parent().data("id");
+                var m = this.items.get(id);
+                m.destroy();
             }
     });
 });
