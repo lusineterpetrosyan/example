@@ -30,6 +30,7 @@
                 })
             },
             addItem: function(m){
+                console.log(m)
                 if(this.$("li[data-id='" + m.id + "']").length == 0 && _.isString(m.id)){
                    // this.$("ul.dataItems").append("<li data-id='" + m.get("_id") + "'>'" + m.get("body.name") + "'<span class='remove'> X </span></li>") // show in list??? or add in it
                      this.$("ul.dataItems").append(this.addItemPage(m.toJSON())); 
@@ -57,10 +58,7 @@
             deleteItem: function(e){
                 var id = $(e.currentTarget).parent().data("id");
                 var m = this.items.get(id);
-               console.log('items',this.items)
-               console.log('m',m)
-               console.log('id',id)
-
+              
                 m.destroy();
             }
     });
