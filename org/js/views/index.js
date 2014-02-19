@@ -61,7 +61,7 @@
                console.log('m',m)
                console.log('id',id)
 
-               // m.destroy();
+                m.destroy();
             }
     });
 });
