@@ -57,6 +57,7 @@
             deleteItem: function(e){
                 var id = $(e.currentTarget).parent().data("id");
                 var m = this.items.get(id);
+               console.log('items',this.items)
                console.log('m',m)
                console.log('id',id)
 
