@@ -47,7 +47,7 @@
                 }, {callback: function(json, model){
                         console.log('json', json)
                         console.log('model', model)
-                }
+                },wait:true
             })
             },
             removeItem: function(m){
